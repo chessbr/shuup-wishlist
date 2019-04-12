@@ -91,5 +91,6 @@ class WishlistFavoritesButtonPlugin(TemplatedPlugin):
         context["show_text"] = self.config.get("show_text", True)
         shop = context['request'].shop
         customer = context['request'].customer
-        context["wishlist_id"] = get_favorites_list(shop, customer).pk
+        if customer:
+            context["wishlist_id"] = get_favorites_list(shop, customer).pk
         return context
